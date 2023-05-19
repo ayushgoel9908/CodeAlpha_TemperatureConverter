@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<title>Temperature Converter</title>
+</head>
+<body background="1.jpg">
+	<h1 align="center" style="color:rgb(249, 253, 255)">Temperature Converter</h1>
+	<form>
+		<center>
+		<label for="fahrenheit"></label>
+		<h1 style="color:rgb(6, 122, 224)">Farhenhiet</h1>
+		<input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit" required>
+		<label for="celsius"></label>
+		<h1 style="color:rgb(16, 110, 219)">Celsius</h1>
+		<input type="number" id="celsius" placeholder="Enter temperature in Celsius" required><br>
+		<button type="button" onclick="convertTemp()">Convert</button>
+		<p id="result"></p>
+		</center>
+	</form>
+
+	<script>
+		function convertTemp() {
+			var fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+			var celsius = parseFloat(document.getElementById("celsius").value);
+
+			if (isNaN(fahrenheit) && isNaN(celsius)) {
+				alert("Please enter a temperature to convert.");
+			}
+			else if (!isNaN(fahrenheit) && isNaN(celsius)) {
+				celsius = (fahrenheit - 32) * 5 / 9;
+				document.getElementById("celsius").value = celsius.toFixed(2);
+			}
+			else if (isNaN(fahrenheit) && !isNaN(celsius)) {
+				fahrenheit = celsius * 9 / 5 + 32;
+				document.getElementById("fahrenheit").value = fahrenheit.toFixed(2);
+			}
+			else {
+				alert("Please enter only one temperature to convert.");
+			}
+		}
+	</script>
+</body>
+</html>
